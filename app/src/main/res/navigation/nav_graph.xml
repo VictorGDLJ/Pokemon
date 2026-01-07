@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentPokemon">
+
+    <fragment
+        android:id="@+id/fragmentPokemon"
+        android:name="com.example.pokemon.FragmentPokemon"
+        android:label="Pokedex"
+        tools:layout="@layout/fragment_pokemon">
+
+        <action
+            android:id="@+id/action_fragmentPokemon_to_detallePokemonFragment"
+            app:destination="@id/detallePokemonFragment" />
+        <action
+            android:id="@+id/action_fragmentPokemon_to_favPokemonFragment"
+            app:destination="@id/favPokemonFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detallePokemonFragment"
+        android:name="com.example.pokemon.DetallePokemonFragment"
+        android:label="Detalle"
+        tools:layout="@layout/fragment_detalle_pokemon" />
+    <fragment
+        android:id="@+id/favPokemonFragment"
+        android:name="com.example.pokemon.FavPokemonFragment"
+        android:label="Favoritos"
+        tools:layout="@layout/fragment_fav_pokemon" >
+        <action
+            android:id="@+id/action_favPokemonFragment_to_detallePokemonFragment"
+            app:destination="@id/detallePokemonFragment" />
+    </fragment>
+</navigation>
