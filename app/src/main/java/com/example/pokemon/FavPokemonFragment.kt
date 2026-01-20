@@ -51,8 +51,8 @@ class FavPokemonFragment : Fragment() {
             override fun onMove(r: RecyclerView, v: RecyclerView.ViewHolder, t: RecyclerView.ViewHolder) = false
             override fun onSwiped(v: RecyclerView.ViewHolder, d: Int) {
                 val pokemon = adapter.getPokemonAt(v.adapterPosition)
-                viewModel.eliminarPokemon(pokemon)
-                viewModel.cargarSoloFavoritos()
+                viewModel.eliminarPokemonBasura(pokemon)
+                viewModel.añadirpokemonlistanormal(pokemon)
             }
         }
         ItemTouchHelper(swipeCallback).attachToRecyclerView(binding.recyclerView)

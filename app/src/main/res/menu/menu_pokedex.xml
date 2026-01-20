@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/action_favoritos"
-        android:icon="@drawable/ic_star_filled"
+        android:icon="@drawable/basura"
         android:title="Favoritos"
         app:showAsAction="ifRoom" />
 </menu>

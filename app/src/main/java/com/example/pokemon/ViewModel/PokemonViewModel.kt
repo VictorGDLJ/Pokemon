@@ -9,6 +9,7 @@ class PokemonViewModel : ViewModel() {
 
     private val repository = PokemonRepository()
     private var listaCompleta: MutableList<Pokemon> = mutableListOf()
+    private var listaBorrados: MutableList<Pokemon> = mutableListOf()
 
     val pokemons = MutableLiveData<MutableList<Pokemon>>()
     val pokemonSeleccionado = MutableLiveData<Pokemon?>()
@@ -20,9 +21,9 @@ class PokemonViewModel : ViewModel() {
 
     // Carga solo los que el favorito = true
     fun cargarSoloFavoritos() {
-        listaCompleta = repository.getPokemons()
-        val favoritos = listaCompleta.filter { it.esFavorito }
+        val favoritos = listaBorrados
         pokemons.value = ArrayList(favoritos)
+
     }
 
     fun seleccionarPokemon(pokemon: Pokemon) {
@@ -54,6 +55,40 @@ class PokemonViewModel : ViewModel() {
             it.esFavorito = !it.esFavorito
         }
     }
+
+
+
+    fun eliminarPokemonBasura(pokemon: Pokemon){
+        listaBorrados.remove(pokemon)
+    }
+
+    fun añadirpokemonlistanormal(pokemon: Pokemon){
+        var contador=0
+        for (pokemonseleccionado in listaCompleta){
+
+            if (pokemon.id > pokemonseleccionado.id){
+
+                listaCompleta.add(contador,pokemon)
+
+            }else if (pokemon.id< pokemonseleccionado.id){
+                listaCompleta.add(contador,pokemon)
+
+            }
+            contador++
+
+        }
+
+    }
+
+    fun añadirpokemon(pokemon: Pokemon){
+        listaBorrados.add(pokemon)
+    }
+
+
+
+
+
+
 
     fun eliminarPokemon(pokemon: Pokemon) {
         repository.getPokemons().remove(pokemon)

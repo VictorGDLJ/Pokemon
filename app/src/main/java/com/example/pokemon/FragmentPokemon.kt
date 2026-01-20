@@ -59,7 +59,13 @@ class FragmentPokemon : Fragment() {
 
                 if (position != RecyclerView.NO_POSITION) {
                     val pokemon = adapter.getPokemonAt(position)
+                    viewModel.añadirpokemon(pokemon)
+
                     viewModel.eliminarPokemon(pokemon)
+
+
+
+
                 }
             }
         }
